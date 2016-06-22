@@ -1,0 +1,32 @@
+%article.business
+  .container.business_info
+    .row
+      .col-sm-10.col-sm-offset-1
+        %header
+          %h3 Mr Chippy
+        %br
+        %p A take away shop which sells fish and chips.
+
+%section.reviews.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %form
+        %fieldset
+          .form-group
+            %label Review this business
+            .row
+              .col-sm-8
+                %textarea.form-control(name="" rows="6" value="Start your review...")
+        %fieldset.form-group.actions.clearfix
+          %input(type="submit" value="Submit" class="btn")
+          %a(href="") Cancel
+      %header
+        %h3 User Reviews (253)
+      %ul
+        - 8.times do
+          %article.review
+            %li.row
+              .col-sm-2
+                %p by <a href="">John A. Zoidberg</a>
+              .col-sm-8
+                %p In my opinion, this is one of the best local takeaway shops.
