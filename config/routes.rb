@@ -1,5 +1,10 @@
 YelpClone::Application.routes.draw do
+  root 'businesses#index'
+
+  resources :businesses, only: [:show]
+
   get 'ui(/:action)', controller: 'ui'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
