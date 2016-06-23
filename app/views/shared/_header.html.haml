@@ -1,11 +1,11 @@
 %section#top-header.row
   %h1.col-md-2
-    = link_to image_tag("header_print.gif")
+    = link_to image_tag("header_print.gif"), root_path
   %ul.col-md-4.clearfix
     %li= link_to "User Profiles"
   #user_links.pull-right
     %ul
       %li
         %a
-          = link_to "Sign Up"
-          = link_to "Login"
+          = link_to "Sign Up", new_user_path
+          = link_to "Login", sign_in_path
