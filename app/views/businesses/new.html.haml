@@ -1,0 +1,16 @@
+%section.add_business
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        = bootstrap_form_for(@business, layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-6") do |f|
+          %header.h1.col-md-offset-3
+            Add a New Business
+          %fieldset
+            .form-group
+              = f.text_field :name, label: "Business Name"
+            .form-group
+              = f.text_area :description, label: "Description of Business", rows: 8
+
+          %fieldset.actions.form-group
+            .col-sm-6.col-md-offset-3
+              = f.submit "Add Business", class: "btn btn-default"

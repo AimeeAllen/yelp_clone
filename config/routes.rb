@@ -1,7 +1,7 @@
 YelpClone::Application.routes.draw do
   root 'businesses#index'
 
-  resources :businesses, only: [:show]
+  resources :businesses, only: [:show, :new, :create]
 
   get 'ui(/:action)', controller: 'ui'
 
