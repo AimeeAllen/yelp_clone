@@ -1,8 +1,11 @@
 YelpClone::Application.routes.draw do
   root 'pages#front'
+  get '/home', to: "businesses#index"
   get '/sign_in', to: "sessions#new"
+  post '/sign_in', to: "sessions#create"
+  get '/logout', to: "sessions#destroy"
 
-  resources :businesses, only: [:show, :new, :create, :index]
+  resources :businesses, only: [:show, :new, :create]
   resources :users, only: [:new, :create]
 
   get 'ui(/:action)', controller: 'ui'

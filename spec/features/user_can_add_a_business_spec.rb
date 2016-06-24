@@ -2,7 +2,8 @@ require 'spec_helper'
 
 feature "user can add a business" do
   background do
-    visit businesses_path
+    sign_in_user
+    visit home_path
     click_on "+ Add a New Business"
   end
   scenario "user successfully adds a new business" do
