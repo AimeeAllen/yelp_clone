@@ -15,8 +15,12 @@ class ApplicationController < ActionController::Base
 
   def redirect_if_not_logged_in
     unless current_user
-      flash[:danger] = "You must first login"
-      redirect_to sign_in_path
+      if params[:controller] == 'businesses' and params[:action] == 'index'
+        redirect_to root_path
+      else
+        flash[:danger] = "You must first login"
+        redirect_to sign_in_path
+      end
     end
   end
 end

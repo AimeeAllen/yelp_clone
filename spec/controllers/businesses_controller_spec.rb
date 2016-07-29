@@ -16,8 +16,10 @@ describe BusinessesController do
         expect(assigns(:businesses)).to match_array([business1, business2])
       end
     end
-    it_behaves_like "user is not logged in" do
-      let(:action) {get :index}
+    it "redirects to root_path when no user is logged in" do
+      no_logged_in_user
+      get :index
+      expect(response).to redirect_to(root_path)
     end
   end
 
