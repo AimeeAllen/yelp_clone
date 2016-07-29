@@ -23,12 +23,17 @@
           %input(type="submit" value="Submit" class="btn")
           %a(href="") Cancel
       %header
-        %h3 User Reviews (253)
+        %h3 
+          = "User Reviews (#{@business.reviews.count})"
+          Showing the Most Recent 10 Reviews
       %ul
-        - 8.times do
+        - @business.recent_reviews.each do |review|
           %article.review
             %li.row
               .col-sm-2
-                %p by <a href="">John A. Zoidberg</a>
+                %p
+                  by
+                  = link_to review.user.username
               .col-sm-8
-                %p In my opinion, this is one of the best local takeaway shops.
+                %p
+                  = review.body
