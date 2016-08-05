@@ -5,7 +5,9 @@ YelpClone::Application.routes.draw do
   post '/sign_in', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
 
-  resources :businesses, only: [:show, :new, :create]
+  resources :businesses, only: [:show, :new, :create] do
+    resources :reviews, only: [:create]
+  end
   resources :users, only: [:new, :create]
 
   get 'ui(/:action)', controller: 'ui'

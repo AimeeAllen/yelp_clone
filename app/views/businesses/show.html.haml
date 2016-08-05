@@ -12,16 +12,11 @@
 %section.reviews.container
   .row
     .col-sm-10.col-sm-offset-1
-      %form
-        %fieldset
-          .form-group
-            %label Review this business
-            .row
-              .col-sm-8
-                %textarea.form-control(name="" rows="6" value="Start your review...")
-        %fieldset.form-group.actions.clearfix
-          %input(type="submit" value="Submit" class="btn")
-          %a(href="") Cancel
+      = bootstrap_form_for [@business,@review], class: "col-sm-8" do |r|
+        = r.text_area :body, label: 'Review this business', placeholder: "Start your review...", rows: 6
+        = r.submit "Submit", class: "btn"
+        &nbsp
+        = link_to "Cancel"
       %header
         %h3 
           = "User Reviews (#{@business.reviews.count})"

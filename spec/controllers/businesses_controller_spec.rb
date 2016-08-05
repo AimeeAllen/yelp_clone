@@ -70,12 +70,19 @@ describe BusinessesController do
   end
 
   describe "GET show" do
-    it "assigns @business with logged in user" do
-      logged_in_user
-      Fabricate(:business)
-      get :show, id: Business.first
-      expect(assigns(:business)).to be_instance_of(Business)
-      expect(assigns(:business)).not_to be_new_record
+    context "logged in user" do
+      before {logged_in_user}
+      let!(:business) {Fabricate(:business)}
+      it "assigns @business" do        
+        get :show, id: Business.first
+        expect(assigns(:business)).to be_instance_of(Business)
+        expect(assigns(:business)).not_to be_new_record
+      end
+      it "assigns @review to a new review" do
+        get :show, id: business.id
+        expect(assigns(:review)).to be_instance_of(Review)
+        expect(assigns(:review)).to be_new_record
+      end
     end
     it_behaves_like "user is not logged in" do
       let(:action) do
