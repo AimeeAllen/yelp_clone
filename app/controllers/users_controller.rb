@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :redirect_if_not_logged_in
+  skip_before_action :redirect_if_not_logged_in, except: [:show, :index]
   def new
     @user = User.new
   end
@@ -13,6 +13,14 @@ class UsersController < ApplicationController
       flash[:danger] = "Please enter valid details below"
       render :new
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def index
+    @users = User.all
   end
 
   private

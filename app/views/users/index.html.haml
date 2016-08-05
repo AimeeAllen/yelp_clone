@@ -1,0 +1,10 @@
+%article.business_list
+  %header.business
+    .container
+      .row
+        .col-sm-10.col-sm-offset-1
+          %h1
+            List of all Users:
+          %ul
+            - @users.each do |user|
+              %li.h3= link_to "#{user.username}", user_path(user.id), id: "user_#{user.id}"

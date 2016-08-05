@@ -1,0 +1,28 @@
+%section.user
+  %article
+    .container
+      .row
+        .col-sm-10.col-sm-offset-1
+          %header
+            %h2
+              Profile of:
+              = @user.username
+
+%section.user_reviews.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %header
+        %h3 
+          = "Total Reviews by User (#{@user.reviews.count})"
+          Showing the Most Recent 10 Reviews
+      %ul
+        - @user.recent_reviews.each do |review|
+          %article.review
+            %li.row
+              .col-sm-2
+                %p
+                  Review of: 
+                  = link_to review.business.name, business_path(review.business)
+              .col-sm-8
+                %p
+                  = review.body
