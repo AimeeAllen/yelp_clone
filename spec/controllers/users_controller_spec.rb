@@ -37,4 +37,32 @@ describe UsersController do
       end
     end
   end
+  describe "GET index" do
+    context "logged in user" do
+      before {logged_in_user}
+      it "assigns @users" do
+        Fabricate(:user)
+        get :index
+        expect(assigns[:users]).not_to be_blank
+        expect(assigns[:users].first).to be_instance_of(User)
+      end
+    end
+    it_behaves_like "user is not logged in" do
+      let(:action) {get :index}
+    end
+  end
+
+  describe "GET show" do
+    context "logged in user" do
+      it "assigns @user" do
+        logged_in_user
+        user = Fabricate(:user)
+        get :show, id: user.id
+        expect(assigns(:user)).to eq(user)
+      end
+    end
+    it_behaves_like "user is not logged in" do
+      let(:action) {get :show, id: Fabricate(:user).id}
+    end
+  end
 end
